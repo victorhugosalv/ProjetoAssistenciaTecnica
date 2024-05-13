@@ -2,7 +2,7 @@ package models;
 
 import SistemaArquivos.LeitorEGravador;
 import entities.Cliente;
-import entities.ESTADO;
+import entities.Estado;
 import entities.Pedido;
 import entities.Tecnico;
 import models.exceptions.*;
@@ -68,7 +68,7 @@ public class SistemaAssistencia implements SistemaPedidos{
         List<Pedido> pedidosEmEspera = new ArrayList<>();
         ordenarFilaDePedido();
         for(Pedido p: pedidos){
-            if(p.getEstado() == ESTADO.NAO_INICIADO){
+            if(p.getEstado() == Estado.NAO_INICIADO){
                 pedidosEmEspera.add(p);
             }
         }
@@ -174,18 +174,18 @@ public class SistemaAssistencia implements SistemaPedidos{
 
     @Override
     public void alterarEstadoDoPedido(Pedido pedido, int opcao) throws OpcaoInvalidaException, PedidoJaTemTecnicoException, NaoEncontrouTecnicoException {
-        ESTADO novoEstado;
+        Estado novoEstado;
         switch(opcao){
             case 1:
-                novoEstado = ESTADO.EM_ANALISE;
+                novoEstado = Estado.EM_ANALISE;
 
                 break;
             case 2:
-                novoEstado = ESTADO.SOLUCIONANDO;
+                novoEstado = Estado.SOLUCIONANDO;
                 break;
             case 3:
                 DateTimeFormatter fmt1 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-                novoEstado = ESTADO.FINALIZADO;
+                novoEstado = Estado.FINALIZADO;
                 Tecnico tecN = pesquisarTecnicoPorCPF(pedido.getTecnico().getCpf());
                 tecN.setPedido(null);
                 pedido.setTecnico(null);

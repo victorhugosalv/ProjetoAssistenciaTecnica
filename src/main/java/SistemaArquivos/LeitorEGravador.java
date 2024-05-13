@@ -1,7 +1,7 @@
 package SistemaArquivos;
 
 import entities.Cliente;
-import entities.ESTADO;
+import entities.Estado;
 import entities.Pedido;
 import entities.Tecnico;
 import models.SistemaAssistencia;
@@ -40,7 +40,7 @@ public class LeitorEGravador{
                 try {
                     tecnico = sistema.pesquisarTecnicoPorCPF(cpfDoTecnico);
                 } catch(NaoEncontrouTecnicoException ignored) {}
-                pedido = new Pedido(codigo, descricao, tipo, dataDeChegada, dataDeSaida, c, valor, tecnico, ESTADO.valueOf(estado));
+                pedido = new Pedido(codigo, descricao, tipo, dataDeChegada, dataDeSaida, c, valor, tecnico, Estado.valueOf(estado));
                 if(tecnico != null){
                     tecnico.setPedido(pedido);
                 }

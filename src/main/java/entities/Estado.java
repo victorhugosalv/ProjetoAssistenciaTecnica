@@ -1,6 +1,6 @@
 package entities;
 
-public enum ESTADO {
+public enum Estado {
     NAO_INICIADO,
     EM_ANALISE,
     SOLUCIONANDO,

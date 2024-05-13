@@ -1,8 +1,6 @@
 package entities;
 
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Comparator;
 import java.util.Objects;
 import java.time.LocalDateTime;
 
@@ -15,7 +13,7 @@ public class Pedido implements Comparable<Pedido> {
     private Cliente cliente;
     private double valor;
     private Tecnico tecnico;
-    private ESTADO estado;
+    private Estado estado;
 
     LocalDateTime dataMomento = LocalDateTime.now();
     DateTimeFormatter fmt1 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
@@ -25,14 +23,14 @@ public class Pedido implements Comparable<Pedido> {
         this.descricao = descricao;
         this.tipoDoPedido = tipoDoPedido;
         this.dataDeChegada = dataMomento.format(fmt1);
-        this.estado = ESTADO.NAO_INICIADO;
+        this.estado = Estado.NAO_INICIADO;
         this.cliente = user;
         this.codigo = hashCode();
         this.valor = valor;
 
     }
 
-    public Pedido(Integer codigo, String descricao, String tipoDoPedido, String dataDeChegada, String dataDeSaida, Cliente user, Double valor, Tecnico tecnico, ESTADO estado) {
+    public Pedido(Integer codigo, String descricao, String tipoDoPedido, String dataDeChegada, String dataDeSaida, Cliente user, Double valor, Tecnico tecnico, Estado estado) {
         this.codigo = codigo;
         this.descricao = descricao;
         this.tipoDoPedido = tipoDoPedido;
@@ -102,11 +100,11 @@ public class Pedido implements Comparable<Pedido> {
     }
 
 
-    public ESTADO getEstado() {
+    public Estado getEstado() {
         return estado;
     }
 
-    public void setEstado(ESTADO estado) {
+    public void setEstado(Estado estado) {
         this.estado = estado;
     }
 
